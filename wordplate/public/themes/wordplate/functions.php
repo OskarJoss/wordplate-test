@@ -36,3 +36,38 @@ add_action('after_setup_theme', function () {
 add_filter('jpeg_quality', function () {
     return 100;
 }, 10, 2);
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('style', get_stylesheet_directory_uri() . "/assets/styles/app.css");
+    wp_enqueue_script("script", get_template_directory_uri() . "/assets/scripts/app.js");
+});
+
+add_action('init', function () {
+    register_extended_post_type('event');
+});
+
+if (function_exists('acf_add_local_field_group')) :
+
+    acf_add_local_field_group(array(
+        'key' => 'group_1',
+        'title' => 'My Group',
+        'fields' => array(
+            array(
+                'key' => 'field_1',
+                'label' => 'Sub Title',
+                'name' => 'sub_title',
+                'type' => 'text',
+            )
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'event',
+                ),
+            ),
+        ),
+    ));
+
+endif;

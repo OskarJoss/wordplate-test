@@ -8,7 +8,7 @@ if (function_exists('acf_add_local_field_group')) :
         'fields' => array(
             [
                 'key' => 'field_1',
-                'label' => 'Title',
+                'label' => 'Description',
                 'name' => 'sub_title',
                 'type' => 'text',
             ],
@@ -16,7 +16,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'key' => 'field_2',
                 'label' => 'Date',
                 'name' => 'sub_title2',
-                'type' => 'text',
+                'type' => 'date_time_picker',
             ]
         ),
         'location' => array(

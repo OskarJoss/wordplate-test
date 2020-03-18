@@ -42,8 +42,5 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script("script", get_template_directory_uri() . "/assets/scripts/app.js");
 });
 
-add_action('init', function () {
-    register_extended_post_type('event');
-});
-
-require get_template_directory() . '/acf/event.php';
+require get_template_directory() . '/post-types/event.php';
+require get_template_directory() . '/fields/event.php';

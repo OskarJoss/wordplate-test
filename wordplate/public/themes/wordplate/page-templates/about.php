@@ -1,4 +1,16 @@
 <?php /* Template Name: About */ ?>
+<?php get_header(); ?>
 
-<h1>About page yo!</h1>
-<p>its about abouting</p>
+<article class="about">
+
+    <?php while (have_posts()) : the_post(); ?>
+
+        <h1><?php the_title(); ?></h1>
+        <p><?php the_field("description", false) ?></p>
+
+    <?php endwhile; ?>
+
+</article>
+
+
+<?php get_footer(); ?>

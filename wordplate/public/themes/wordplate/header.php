@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<head>
-  <meta charset="<?php bloginfo('charset'); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#6d9aea">
 
-  <?php wp_head(); ?>
+<head>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#6d9aea">
+
+    <?php wp_head(); ?>
 </head>
+
 <body <?php body_class(); ?>>
     <header>
         <nav role="navigation">
-            <?php wp_nav_menu(['theme_location' => 'navigation']); ?>
+            <ul>
+                <a href="/index.php">
+                    <li class="<?php echo is_home() ? 'active' : '' ?>">Home</li>
+                </a>
+                <?php foreach (get_pages() as $page) : ?>
+                    <a href="<?php the_permalink($page) ?>">
+                        <li class="<?php echo is_page($page->ID)  ? 'active' : '' ?>">
+                            <?php echo $page->post_title; ?>
+                        </li>
+                    </a>
+                <?php endforeach; ?>
+
+            </ul>
         </nav>
     </header>

@@ -13,17 +13,16 @@
     <header>
         <nav role="navigation">
             <ul>
-                <a href="/index.php">
-                    <li class="<?php echo is_home() ? 'active' : '' ?>">Home</li>
-                </a>
-                <?php foreach (get_pages() as $page) : ?>
+                <?php foreach (get_pages([
+                    "sort_columns" => "menu_order",
+                    "sort_order" => "DESC"
+                ]) as $page) : ?>
                     <a href="<?php the_permalink($page) ?>">
                         <li class="<?php echo is_page($page->ID)  ? 'active' : '' ?>">
                             <?php echo $page->post_title; ?>
                         </li>
                     </a>
                 <?php endforeach; ?>
-
             </ul>
         </nav>
     </header>
